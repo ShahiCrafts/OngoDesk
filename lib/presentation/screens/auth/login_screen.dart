@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ongo_desk/widgets/custom_text_field.dart';
+import 'package:ongo_desk/presentation/widgets/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

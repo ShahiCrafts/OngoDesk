@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ongo_desk/widgets/custom_logo.dart';
+import 'package:ongo_desk/presentation/widgets/custom_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
