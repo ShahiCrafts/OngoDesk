@@ -18,6 +18,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   static const Color orangeColor = Color(0xFFFF5C00);
 
+  void loginValidation() {
+    String emailAddress = emailAddressController.text;
+    String password = passwordController.text;
+
+    if (emailAddress == 'dev.shahi.apps@gmail.com' && password == 'admin@123') {
+      Navigator.pushReplacementNamed(context, '/dashboard');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -136,7 +145,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {  
+                        loginValidation();
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: orangeColor,
