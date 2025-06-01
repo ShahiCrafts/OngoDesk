@@ -9,7 +9,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+      margin: const EdgeInsets.only(left: 20, bottom: 12, right: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -45,7 +45,7 @@ class PostCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 6),
+          const SizedBox(height: 2),
 
           /// Avatar, Name and Status
           Row(
