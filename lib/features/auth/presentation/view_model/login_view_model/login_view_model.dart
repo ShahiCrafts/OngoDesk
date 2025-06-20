@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ongo_desk/features/auth/domain/usecase/auth_login_usecase.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_event.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_state.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_event.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_state.dart';
 
 class LoginViewModel extends Bloc<LoginEvent, LoginState> {
 

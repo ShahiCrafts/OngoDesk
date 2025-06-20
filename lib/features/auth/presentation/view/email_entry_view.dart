@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_event.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_state.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_view_model.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_event.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_state.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_view_model.dart';
 
 class EmailEntryView extends StatelessWidget {
   EmailEntryView({super.key});

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ongo_desk/app/get_it/service_locator.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/details_entry_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/email_entry_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/login_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/password_entry_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/verification_code_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_view_model.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_view_model.dart';
+import 'package:ongo_desk/features/auth/presentation/view/details_entry_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view/email_entry_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view/login_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view/password_entry_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view/verification_code_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_view_model.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_view_model.dart';
 import 'package:ongo_desk/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:ongo_desk/presentation/screens/splash/splash_screen.dart';
 

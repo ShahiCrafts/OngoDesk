@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ongo_desk/app/get_it/service_locator.dart';
 import 'package:ongo_desk/features/auth/domain/usecase/auth_register_usecase.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view/login_view.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_view_model.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_event.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/signup_view_model/signup_state.dart';
+import 'package:ongo_desk/features/auth/presentation/view/login_view.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_view_model.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_event.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/signup_state.dart';
 
 class SignupViewModel extends Bloc<SignupEvent, SignupState> {
   final AuthRegisterUsecase _authRegisterUsecase;

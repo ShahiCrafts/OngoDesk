@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_view_model.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_event.dart';
-import 'package:ongo_desk/features/auth/presentation/auth/view_model/login_view_model/login_state.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_view_model.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_event.dart';
+import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_state.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
