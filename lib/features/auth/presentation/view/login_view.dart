@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
               ),
             );
           context.read<LoginViewModel>().add(ResetFormStatus());
-          // TODO: Navigate to Home Screen
+          Navigator.pushNamed(context, '/dashboard');
         }
       },
       child: Scaffold(
