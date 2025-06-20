@@ -59,6 +59,7 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
                 icon: const Icon(Icons.logout, size: 20,),
                 onPressed: () {
                   Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context, '/login');
                 },
               ),
               onTap: () {},

@@ -37,15 +37,6 @@ class CustomTextField extends StatelessWidget {
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.black54),
-              borderRadius: BorderRadius.circular(32),
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
-            ),
             suffixIcon: isPassword ? IconButton(
               icon: Icon(
                 obscureText ? Icons.visibility_off : Icons.visibility,

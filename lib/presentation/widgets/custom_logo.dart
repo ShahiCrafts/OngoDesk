@@ -12,12 +12,12 @@ class CustomLogo extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          'assets/images/logo.png',
-          width: size.width * 0.26,
+          'assets/images/logo_temp.png',
+          width: size.width * 0.15,
           fit: BoxFit.contain,
         ),
 
-        const SizedBox(height: 2),
+        const SizedBox(height: 12),
 
         Column(
           children: [
