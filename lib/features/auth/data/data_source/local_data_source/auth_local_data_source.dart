@@ -10,6 +10,16 @@ class AuthLocalDataSource implements IAuthDataSource {
     : _hiveService = hiveService;
 
   @override
+  Future<void> sendOtpCode(String email) {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<void> verifyOtpCode(String email, String otpCode) {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<void> createAccount(UserEntity user) async {
     try {
       final authHiveModel = AuthHiveModel.fromEntity(user);
