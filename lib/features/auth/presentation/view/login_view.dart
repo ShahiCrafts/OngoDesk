@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ongo_desk/features/auth/presentation/view/widgets/custom_text_field.dart';
 import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_view_model.dart';
 import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_event.dart';
 import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model/login_state.dart';
@@ -13,58 +14,30 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginViewModel, LoginState>(
-      listener: (context, state) {
-        if (state.formStatus == FormStatus.failure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(state.message ?? 'Login failed!'),
-                backgroundColor: Colors.redAccent,
-                behavior: SnackBarBehavior.floating,
-              ),
-            );
-          context.read<LoginViewModel>().add(ResetFormStatus());
-        } else if (state.formStatus == FormStatus.success) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(state.message ?? 'Login Successful!'),
-                backgroundColor: Colors.green,
-                behavior: SnackBarBehavior.floating,
-              ),
-            );
-          context.read<LoginViewModel>().add(ResetFormStatus());
-          Navigator.pushNamed(context, '/dashboard');
-        }
-      },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 40),
-                      _buildHeader(context),
-                      const SizedBox(height: 36),
-                      _buildForm(context),
-                      const SizedBox(height: 30),
-                      _buildSocialLogin(context),
-                    ],
-                  ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 40),
+                    _buildHeader(context),
+                    const SizedBox(height: 36),
+                    _buildForm(context),
+                    const SizedBox(height: 30),
+                    _buildSocialLogin(context),
+                  ],
                 ),
               ),
-              _buildFooter(context),
-              const SizedBox(height: 20),
-            ],
-          ),
+            ),
+            _buildFooter(context),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );
@@ -74,10 +47,7 @@ class LoginView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          'assets/images/logo_temp.png', // Keeping your logo
-          width: 50,
-        ),
+        Image.asset('assets/images/logo_temp.png', width: 50),
         const SizedBox(height: 20),
         const Text(
           "Welcome Back!",
@@ -105,93 +75,34 @@ class LoginView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Email Address",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-              const SizedBox(height: 8),
-              TextFormField(
-                onChanged: (email) => bloc.add(LoginEmailChanged(email)),
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: "you@example.com",
-                  prefixIcon: Icon(
-                    Icons.mail_rounded, color: Colors.grey[500],
-                  ),
-                  filled: true,
-                  fillColor: lightGreyColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
+              CustomTextField(
+                bloc: bloc,
+                hintText: 'johndoe@example.com',
+                lightGreyColor: lightGreyColor,
+                state: state,
+                textLabel: 'Email Address',
+                isPassword: false,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Please enter a valid email';
-                  }
+                  if ((value ?? '').isEmpty) return 'Please enter your email';
                   return null;
                 },
+                onChanged: (email) => bloc.add(LoginEmailChanged(email!)),
               ),
               const SizedBox(height: 20),
-              // Password Text Field
-              Text(
-                "Password",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-              const SizedBox(height: 8),
-              TextFormField(
-                onChanged:
-                    (password) => bloc.add(LoginPasswordChanged(password)),
-                obscureText: state.obscurePassword,
-                decoration: InputDecoration(
-                  hintText: "Password",
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    color: Colors.grey[500],
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      state.obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                      color: Colors.grey.shade600,
-                    ),
-                    onPressed: () => bloc.add(TogglePasswordVisibility()),
-                  ),
-                  filled: true,
-                  fillColor: lightGreyColor,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
+              CustomTextField(
+                bloc: bloc,
+                hintText: 'Enter your password',
+                lightGreyColor: lightGreyColor,
+                state: state,
+                textLabel: 'Password',
+                isPassword: true,
                 validator: (value) {
-                  if (value == null || value.isEmpty)
-                    return 'Password is required';
-                  if (value.length < 6)
-                    return 'Password must be at least 6 characters';
+                  if ((value ?? '').isEmpty) return 'Please enter your password';
                   return null;
                 },
+                onPressed: () => bloc.add(TogglePasswordVisibility()),
+                onChanged:
+                    (password) => bloc.add(LoginPasswordChanged(password!)),
               ),
               const SizedBox(height: 10),
               _buildOptions(context, state),
@@ -239,7 +150,7 @@ class LoginView extends StatelessWidget {
                 : () {
                   if (_formKey.currentState!.validate()) {
                     context.read<LoginViewModel>().add(
-                      LoginSubmitted(state.email, state.password),
+                      LoginSubmitted(state.email, state.password, context),
                     );
                   }
                 },
@@ -249,8 +160,6 @@ class LoginView extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          elevation: 5,
-          shadowColor: orangeColor.withOpacity(0.4),
         ),
         child:
             state.formStatus == FormStatus.submitting
@@ -293,11 +202,8 @@ class LoginView extends StatelessWidget {
         const SizedBox(height: 20),
         SizedBox(
           width: double.infinity,
-          height: 52,
           child: OutlinedButton.icon(
-            onPressed: () {
-              /* TODO: Handle Google Login */
-            },
+            onPressed: () {},
             icon: Image.asset('assets/icons/google.png', height: 24),
             label: const Text(
               'Continue with Google',
