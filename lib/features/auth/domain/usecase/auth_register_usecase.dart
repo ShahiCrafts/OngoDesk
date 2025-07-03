@@ -6,24 +6,24 @@ import 'package:ongo_desk/features/auth/domain/entity/user_entity.dart';
 import 'package:ongo_desk/features/auth/domain/repository/auth_repository.dart';
 
 class AuthRegisterParams extends Equatable {
+  final String fullName;
   final String email;
-  final String role;
   final String password;
 
   const AuthRegisterParams({
+    required this.fullName,
     required this.email,
-    required this.role,
     required this.password,
   });
 
   const AuthRegisterParams.initial({
+    required this.fullName,
     required this.email,
-    required this.role,
     required this.password,
   });
 
   @override
-  List<Object?> get props => [email, role, password];
+  List<Object?> get props => [fullName, email, password];
 }
 
 
@@ -36,8 +36,8 @@ class AuthRegisterUsecase implements UseCaseWithParams<void, AuthRegisterParams>
   @override
   Future<Either<Failure, void>> call(AuthRegisterParams params) {
     final userEntity = UserEntity(
+      fullName: params.fullName,
       email: params.email,
-      role: params.role,
       password: params.password
     );
 
