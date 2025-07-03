@@ -16,3 +16,7 @@ class LocalDatabaseFailure extends Failure {
 class ApiFailure extends Failure {
   const ApiFailure({required super.message});
 }
+
+class SharedPreferencesFailure extends Failure {
+  const SharedPreferencesFailure({required super.message});
+}
