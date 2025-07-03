@@ -31,4 +31,14 @@ class AuthLocalRepository implements IAuthRepository {
       return Left(LocalDatabaseFailure(message: 'Login Failed! $error'));
     }
   }
+  
+  @override
+  Future<Either<Failure, void>> sendOtpToEmail(String email) {
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<Either<Failure, void>> verifyOtp(String email, String otpCode) {
+    throw UnimplementedError();
+  }
 }
