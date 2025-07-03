@@ -35,7 +35,6 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
               ),
             ),
 
-            // Title
             const Text(
               'Accounts',
               style: TextStyle(
@@ -47,7 +46,6 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
             const SizedBox(height: 8),
             const Divider(),
 
-            // Main Account Row
             ListTile(
               leading: const CircleAvatar(
                 radius: 14,
@@ -65,7 +63,6 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
               onTap: () {},
             ),
 
-            // Anonymous Browsing
             ListTile(
               leading: const CircleAvatar(
                 radius: 14,
@@ -74,12 +71,10 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
               ),
               title: const Text('Anonymous Browsing'),
               onTap: () {
-                // Anonymous action
                 Navigator.pop(context);
               },
             ),
 
-            // Add Account
             ListTile(
               leading: const CircleAvatar(
                 radius: 14,
@@ -88,7 +83,6 @@ class ProfileOptionsBottomSheet extends StatelessWidget {
               ),
               title: const Text('Add another account'),
               onTap: () {
-                // Add account action
                 Navigator.pop(context);
               },
             ),

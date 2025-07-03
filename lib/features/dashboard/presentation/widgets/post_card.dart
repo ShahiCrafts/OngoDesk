@@ -17,7 +17,6 @@ class PostCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          /// Category and Posted Time
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -47,7 +46,6 @@ class PostCard extends StatelessWidget {
 
           const SizedBox(height: 2),
 
-          /// Avatar, Name and Status
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -112,7 +110,6 @@ class PostCard extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          /// Post Content
           Text(
             post.content,
             style: const TextStyle(
@@ -124,7 +121,6 @@ class PostCard extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          /// Image
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
@@ -137,11 +133,9 @@ class PostCard extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          /// Upvote / Downvote / Share
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              /// Upvote + Downvote
               Row(
                 children: [
                   _VoteButton(
@@ -158,8 +152,6 @@ class PostCard extends StatelessWidget {
                 ],
               ),
 
-              /// Share Button
-              /// Share Button
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,
