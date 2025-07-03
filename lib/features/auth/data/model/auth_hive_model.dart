@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ongo_desk/app/constant/hive/hive_table_constant.dart';
 import 'package:ongo_desk/features/auth/domain/entity/user_entity.dart';
 import 'package:uuid/uuid.dart';
@@ -19,7 +19,6 @@ class NotificationPreferencesHiveModel extends Equatable {
     required this.inApp,
   });
 
-  // Convert from Entity to Hive Model
   factory NotificationPreferencesHiveModel.fromEntity(
     NotificationPreferencesEntity entity,
   ) {
@@ -29,7 +28,6 @@ class NotificationPreferencesHiveModel extends Equatable {
     );
   }
 
-  // Convert from Hive Model to Entity
   NotificationPreferencesEntity toEntity() {
     return NotificationPreferencesEntity(email: email, inApp: inApp);
   }
@@ -47,75 +45,79 @@ class AuthHiveModel extends Equatable {
   final String? username;
 
   @HiveField(2)
-  final String email;
+  final String fullName;
 
   @HiveField(3)
-  final String password;
+  final String email;
 
   @HiveField(4)
-  final String? googleId;
+  final String password;
 
   @HiveField(5)
-  final String role;
+  final String? googleId;
 
   @HiveField(6)
-  final bool? emailVerified;
+  final String? role;
 
   @HiveField(7)
-  final bool? isBanned;
+  final bool? emailVerified;
 
   @HiveField(8)
-  final bool? isActive;
+  final bool? isBanned;
 
   @HiveField(9)
-  final NotificationPreferencesHiveModel? notificationPreferences;
+  final bool? isActive;
 
   @HiveField(10)
-  final int? ogdPoints;
+  final NotificationPreferencesHiveModel? notificationPreferences;
 
   @HiveField(11)
-  final String? bio;
+  final int? ogdPoints;
 
   @HiveField(12)
-  final String? location;
+  final String? bio;
 
   @HiveField(13)
-  final String? profileImage;
+  final String? location;
 
   @HiveField(14)
-  final DateTime? lastLogin;
+  final String? profileImage;
 
   @HiveField(15)
-  final DateTime? createdAt;
+  final DateTime? lastLogin;
 
   @HiveField(16)
+  final DateTime? createdAt;
+
+  @HiveField(17)
   final DateTime? updatedAt;
 
-  // Constructor
   AuthHiveModel({
     String? userId,
-    required this.username,
+    this.username,
+    required this.fullName,
     required this.email,
     required this.password,
     this.googleId,
-    required this.role,
-    required this.emailVerified,
-    required this.isBanned,
-    required this.isActive,
+    this.role,
+    this.emailVerified,
+    this.isBanned,
+    this.isActive,
     this.notificationPreferences,
-    required this.ogdPoints,
+    this.ogdPoints,
     this.bio,
     this.location,
     this.profileImage,
     this.lastLogin,
     this.createdAt,
     this.updatedAt,
-  }) : userId = const Uuid().v4();
+  }) : userId = userId ?? const Uuid().v4();
 
   factory AuthHiveModel.fromEntity(UserEntity entity) {
     return AuthHiveModel(
       userId: entity.id,
       username: entity.username,
+      fullName: entity.fullName,
       email: entity.email,
       password: entity.password,
       googleId: entity.googleId,
@@ -143,6 +145,7 @@ class AuthHiveModel extends Equatable {
     return UserEntity(
       id: userId,
       username: username,
+      fullName: fullName,
       email: email,
       password: password,
       googleId: googleId,
@@ -150,9 +153,7 @@ class AuthHiveModel extends Equatable {
       emailVerified: emailVerified,
       isBanned: isBanned,
       isActive: isActive,
-      notificationPreferences:
-          notificationPreferences?.toEntity() ??
-          const NotificationPreferencesEntity(),
+      notificationPreferences: notificationPreferences?.toEntity(),
       ogdPoints: ogdPoints,
       bio: bio,
       location: location,
@@ -167,6 +168,7 @@ class AuthHiveModel extends Equatable {
   List<Object?> get props => [
     userId,
     username,
+    fullName,
     email,
     password,
     googleId,

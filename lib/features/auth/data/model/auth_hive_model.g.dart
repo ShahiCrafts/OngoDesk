@@ -57,61 +57,64 @@ class AuthHiveModelAdapter extends TypeAdapter<AuthHiveModel> {
     return AuthHiveModel(
       userId: fields[0] as String?,
       username: fields[1] as String?,
-      email: fields[2] as String,
-      password: fields[3] as String,
-      googleId: fields[4] as String?,
-      role: fields[5] as String,
-      emailVerified: fields[6] as bool?,
-      isBanned: fields[7] as bool?,
-      isActive: fields[8] as bool?,
-      notificationPreferences: fields[9] as NotificationPreferencesHiveModel?,
-      ogdPoints: fields[10] as int?,
-      bio: fields[11] as String?,
-      location: fields[12] as String?,
-      profileImage: fields[13] as String?,
-      lastLogin: fields[14] as DateTime?,
-      createdAt: fields[15] as DateTime?,
-      updatedAt: fields[16] as DateTime?,
+      fullName: fields[2] as String,
+      email: fields[3] as String,
+      password: fields[4] as String,
+      googleId: fields[5] as String?,
+      role: fields[6] as String?,
+      emailVerified: fields[7] as bool?,
+      isBanned: fields[8] as bool?,
+      isActive: fields[9] as bool?,
+      notificationPreferences: fields[10] as NotificationPreferencesHiveModel?,
+      ogdPoints: fields[11] as int?,
+      bio: fields[12] as String?,
+      location: fields[13] as String?,
+      profileImage: fields[14] as String?,
+      lastLogin: fields[15] as DateTime?,
+      createdAt: fields[16] as DateTime?,
+      updatedAt: fields[17] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AuthHiveModel obj) {
     writer
-      ..writeByte(17)
+      ..writeByte(18)
       ..writeByte(0)
       ..write(obj.userId)
       ..writeByte(1)
       ..write(obj.username)
       ..writeByte(2)
-      ..write(obj.email)
+      ..write(obj.fullName)
       ..writeByte(3)
-      ..write(obj.password)
+      ..write(obj.email)
       ..writeByte(4)
-      ..write(obj.googleId)
+      ..write(obj.password)
       ..writeByte(5)
-      ..write(obj.role)
+      ..write(obj.googleId)
       ..writeByte(6)
-      ..write(obj.emailVerified)
+      ..write(obj.role)
       ..writeByte(7)
-      ..write(obj.isBanned)
+      ..write(obj.emailVerified)
       ..writeByte(8)
-      ..write(obj.isActive)
+      ..write(obj.isBanned)
       ..writeByte(9)
-      ..write(obj.notificationPreferences)
+      ..write(obj.isActive)
       ..writeByte(10)
-      ..write(obj.ogdPoints)
+      ..write(obj.notificationPreferences)
       ..writeByte(11)
-      ..write(obj.bio)
+      ..write(obj.ogdPoints)
       ..writeByte(12)
-      ..write(obj.location)
+      ..write(obj.bio)
       ..writeByte(13)
-      ..write(obj.profileImage)
+      ..write(obj.location)
       ..writeByte(14)
-      ..write(obj.lastLogin)
+      ..write(obj.profileImage)
       ..writeByte(15)
-      ..write(obj.createdAt)
+      ..write(obj.lastLogin)
       ..writeByte(16)
+      ..write(obj.createdAt)
+      ..writeByte(17)
       ..write(obj.updatedAt);
   }
 
