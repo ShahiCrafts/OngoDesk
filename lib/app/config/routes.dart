@@ -10,6 +10,9 @@ import 'package:ongo_desk/features/auth/presentation/view_model/login_view_model
 import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/detail_view_model/detail_entry_view_model.dart';
 import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/email_view_model/email_entry_view_model.dart';
 import 'package:ongo_desk/features/auth/presentation/view_model/signup_view_model/otp_view_model/otp_entry_view_model.dart';
+import 'package:ongo_desk/features/create_event/presentation/view/create_event_view.dart';
+import 'package:ongo_desk/features/create_post/presentation/view/create_post_view.dart';
+import 'package:ongo_desk/features/create_post/presentation/view_model/create_post_view_model.dart';
 import 'package:ongo_desk/features/splash/presentation/view/splash_view.dart';
 import 'package:ongo_desk/features/splash/presentation/view_model/splash_view_model.dart';
 import 'package:ongo_desk/features/dashboard/presentation/view/dashboard_view.dart';
@@ -80,6 +83,12 @@ class AppRoutes {
 
       case '/dashboard':
         return MaterialPageRoute(builder: (_) => DashboardView());
+      
+      case '/create-post':
+        return MaterialPageRoute(builder: (_) => BlocProvider.value(value: serviceLocator<CreatePostViewModel>(), child: CreatePostView()));
+
+      case '/create-event':
+        return MaterialPageRoute(builder: (_) => CreateEventView());
 
       default:
         return MaterialPageRoute(
