@@ -11,7 +11,7 @@ AuthApiModel _$AuthApiModelFromJson(Map<String, dynamic> json) => AuthApiModel(
       username: json['username'] as String?,
       fullName: json['fullName'] as String,
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] as String?,
       googleId: json['googleId'] as String?,
       role: json['role'] as String?,
       emailVerified: json['emailVerified'] as bool?,

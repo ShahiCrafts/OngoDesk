@@ -6,13 +6,15 @@ part 'auth_api_model.g.dart';
 
 @JsonSerializable()
 class AuthApiModel extends Equatable {
+  // Use JsonKey to map the server's '_id' to your 'id' field.
   @JsonKey(name: '_id')
   final String? id;
 
   final String? username;
   final String fullName;
   final String email;
-  final String password;
+  // FIX: Made the password nullable
+  final String? password;
 
   final String? googleId;
   final String? role;
@@ -33,7 +35,8 @@ class AuthApiModel extends Equatable {
     this.username,
     required this.fullName,
     required this.email,
-    required this.password,
+    // FIX: Password is no longer required
+    this.password,
     this.googleId,
     this.role,
     this.emailVerified,
@@ -60,6 +63,7 @@ class AuthApiModel extends Equatable {
       username: username,
       fullName: fullName,
       email: email,
+      // FIX: Correctly passes the nullable password
       password: password,
       googleId: googleId,
       role: role,
@@ -83,6 +87,7 @@ class AuthApiModel extends Equatable {
       username: entity.username,
       fullName: entity.fullName,
       email: entity.email,
+      // FIX: Correctly handles the nullable password from the entity
       password: entity.password,
       googleId: entity.googleId,
       role: entity.role,
