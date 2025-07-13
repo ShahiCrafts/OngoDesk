@@ -20,7 +20,7 @@ class AuthLocalRepository implements IAuthRepository {
   }
   
   @override
-  Future<Either<Failure, String>> loginToAccount(String email, String password) async {
+  Future<Either<Failure, ({UserEntity user, String token})>> loginToAccount(String email, String password) async {
     try {
       final result = await _authLocalDataSource.loginToAccount(
         email,
