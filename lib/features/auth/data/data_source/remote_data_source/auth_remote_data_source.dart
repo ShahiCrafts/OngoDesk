@@ -13,7 +13,7 @@ class AuthRemoteDataSource implements IAuthDataSource {
 
   @override
   Future<void> sendOtpCode(String email) async {
-      print('Sending OTP to email: $email'); // Make sure email is not empty
+    print('Sending OTP to email: $email'); // Make sure email is not empty
 
     try {
       final response = await _apiService.dio.post(
@@ -69,15 +69,20 @@ class AuthRemoteDataSource implements IAuthDataSource {
   }
 
   @override
-  Future<String> loginToAccount(String email, String password) async {
+  Future<({UserEntity user, String token})> loginToAccount(
+    String email,
+    String password,
+  ) async {
     try {
       final response = await _apiService.dio.post(
         ApiConstant.login,
         data: {'email': email, 'password': password},
       );
       if (response.statusCode == 200) {
-        final authToken = response.data['token'];
-        return authToken;
+        final userEntity = UserEntity.fromJson(response.data['user']);
+        final token = response.data['token'] as String;
+
+        return (user: userEntity, token: token);
       } else {
         throw Exception('Login failed: ${response.statusMessage}');
       }
