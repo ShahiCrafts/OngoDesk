@@ -103,10 +103,9 @@ void main() {
       expect(params.props, ['a', 'b']);
     });
 
-    // Explicit getter access to help coverage tools detect coverage
     test('LoginParams props getter is accessed', () {
       final params = LoginParams(email: 'x', password: 'y');
-      final props = params.props; // Access getter explicitly
+      final props = params.props;
       expect(props, isNotNull);
     });
   });
