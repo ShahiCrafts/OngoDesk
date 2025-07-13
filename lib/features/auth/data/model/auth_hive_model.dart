@@ -50,8 +50,9 @@ class AuthHiveModel extends Equatable {
   @HiveField(3)
   final String email;
 
+  // FIX: Made the password nullable to match UserEntity
   @HiveField(4)
-  final String password;
+  final String? password;
 
   @HiveField(5)
   final String? googleId;
@@ -97,7 +98,8 @@ class AuthHiveModel extends Equatable {
     this.username,
     required this.fullName,
     required this.email,
-    required this.password,
+    // FIX: Password is no longer required
+    this.password,
     this.googleId,
     this.role,
     this.emailVerified,
@@ -119,6 +121,7 @@ class AuthHiveModel extends Equatable {
       username: entity.username,
       fullName: entity.fullName,
       email: entity.email,
+      // FIX: Now correctly handles a null password from the entity
       password: entity.password,
       googleId: entity.googleId,
       role: entity.role,
@@ -147,6 +150,7 @@ class AuthHiveModel extends Equatable {
       username: username,
       fullName: fullName,
       email: email,
+      // FIX: Correctly passes the nullable password to the entity
       password: password,
       googleId: googleId,
       role: role,
