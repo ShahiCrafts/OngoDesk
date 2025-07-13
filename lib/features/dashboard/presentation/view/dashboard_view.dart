@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ongo_desk/data/models/post_model.dart';
 import 'package:ongo_desk/features/dashboard/presentation/widgets/community_drawer.dart';
-import 'package:ongo_desk/features/dashboard/presentation/widgets/create_post_view.dart';
 import 'package:ongo_desk/features/dashboard/presentation/widgets/dashboard_app_bar.dart';
 import 'package:ongo_desk/features/dashboard/presentation/widgets/post_card.dart';
 import 'package:ongo_desk/features/dashboard/presentation/widgets/switcher_bottom_sheet.dart';
@@ -144,7 +143,7 @@ class DashboardView extends StatelessWidget {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostView()));
+                Navigator.pushNamed(context, '/create-post');
               },
               backgroundColor: brandColor,
               foregroundColor: Colors.white,
