@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
-import 'token_storage_service.dart';
+import 'package:ongo_desk/core/network/auth_service.dart';
 
 class AuthInterceptor extends Interceptor {
-  final TokenStorageService _tokenStorageService;
+  final AuthService _authService;
 
-  AuthInterceptor(this._tokenStorageService);
+  AuthInterceptor(this._authService);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    final accessToken = await _tokenStorageService.getAccessToken();
+    final accessToken = await _authService.getToken();
     if (accessToken != null && accessToken.isNotEmpty) {
       options.headers['Authorization'] = 'Bearer $accessToken';
     }
@@ -18,7 +18,7 @@ class AuthInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
-      await _tokenStorageService.deleteToken();
+      await _authService.signOut();
     }
     handler.next(err);
   }
