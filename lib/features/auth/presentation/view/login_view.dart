@@ -20,18 +20,32 @@ class LoginView extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 40),
-                    _buildHeader(context),
-                    const SizedBox(height: 36),
-                    _buildForm(context),
-                    const SizedBox(height: 30),
-                    _buildSocialLogin(context),
-                  ],
+              child: BlocListener<LoginViewModel, LoginState>(
+                listenWhen:
+                    (previous, current) =>
+                        (previous.formStatus == FormStatus.success) !=
+                        (current.formStatus == FormStatus.failure),
+                listener: (context, state) {
+                  if (state.formStatus == FormStatus.success &&
+                      state.message == "Login Successful!") {
+                    Navigator.pushReplacementNamed(context, '/dashboard');
+                  }
+                },
+                child: SingleChildScrollView(
+                    key: const ValueKey('login_scroll_view'), // <-- ADD THIS LINE
+
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 40),
+                      _buildHeader(context),
+                      const SizedBox(height: 36),
+                      _buildForm(context),
+                      const SizedBox(height: 30),
+                      _buildSocialLogin(context),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -97,7 +111,8 @@ class LoginView extends StatelessWidget {
                 textLabel: 'Password',
                 isPassword: true,
                 validator: (value) {
-                  if ((value ?? '').isEmpty) return 'Please enter your password';
+                  if ((value ?? '').isEmpty)
+                    return 'Please enter your password';
                   return null;
                 },
                 onPressed: () => bloc.add(TogglePasswordVisibility()),
@@ -203,6 +218,8 @@ class LoginView extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
+            key: const ValueKey('google_login_button'), //
+
             onPressed: () {},
             icon: Image.asset('assets/icons/google.png', height: 24),
             label: const Text(

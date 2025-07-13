@@ -37,15 +37,15 @@ class RememberMeToggled extends LoginEvent {
   List<Object?> get props => [value];
 }
 
-class NavigateToSignupEvent extends LoginEvent {
-  final BuildContext context;
-  const NavigateToSignupEvent({required this.context});
-}
+// class NavigateToSignupEvent extends LoginEvent {
+//   final BuildContext context;
+//   const NavigateToSignupEvent({required this.context});
+// }
 
-class NavigateToDashboardEvent extends LoginEvent {
-  final BuildContext context;
-  const NavigateToDashboardEvent({required this.context});
-}
+// class NavigateToDashboardEvent extends LoginEvent {
+//   final BuildContext context;
+//   const NavigateToDashboardEvent({required this.context});
+// }
 
 class LoginSubmitted extends LoginEvent {
   final String email;
