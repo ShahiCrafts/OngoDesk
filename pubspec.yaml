@@ -57,6 +57,15 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   flutter_speed_dial: ^7.0.0
   google_nav_bar: ^5.0.7
+  smooth_page_indicator: ^1.2.1
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  intrinsic_dimension: ^0.3.1
+  intl: ^0.20.2
+  url_launcher: ^6.3.1
+  mocktail: ^1.0.4
+  coverage: ^1.15.0
+  test_cov_console: ^0.2.2
 
 dev_dependencies:
   flutter_test:
