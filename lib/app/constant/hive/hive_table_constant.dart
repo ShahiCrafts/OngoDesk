@@ -6,4 +6,7 @@ class HiveTableConstant {
 
   static const int notificationPreferenceId = 1;
   static const String notificationPreferenceBox = 'notificationPreferenceBox';
+
+  static const int tagTableId = 2;
+  static const String tagBox = "tagBox";
 }
